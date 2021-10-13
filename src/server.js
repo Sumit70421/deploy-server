@@ -21,29 +21,30 @@ const productsSchema = mongoose.Schema({
 
 const Product = mongoose.model("ProductsAll",productsSchema);
 
-const apple = new Product({
-    imgUrl : "https://i.ibb.co/Gvg71g6/s-l640.jpg",
-    productName : "AirPods",
-    rating : 4,
-    price : 200,
-    type: "Accessories"
-})
+// const apple = new Product({
+//     imgUrl : "https://i.ibb.co/Gvg71g6/s-l640.jpg",
+//     productName : "AirPods",
+//     rating : 4,
+//     price : 200,
+//     type: "Accessories"
+// })
 
-apple.save((err, result)=>{
-    if (err) console.log(err);
-    else console.log(result);
-})
+// apple.save((err, result)=>{
+//     if (err) console.log(err);
+//     else console.log(result);
+// })
 
-Product.find((err,result)=>{
+Product.find(async (err,result)=>{
     if (err) {console.log(err);}
-    else {console.log(result);
+    else {
+        const jsonSO = [];
         result.forEach((document)=>{
             jsonSO.push(document);
         })
+        console.log(jsonSO)
     } 
 })
 
-console.log(jsonSO[0])
 router.get("/",(req,res)=>{
     res.json(jsonSO)
 });
