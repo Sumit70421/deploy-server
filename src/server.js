@@ -7,7 +7,7 @@ const url = "mongodb+srv://admin:dbpassword@clustertest.os5rj.mongodb.net/ecom?r
 mongoose.connect(url,{useNewUrlParser : true , useUnifiedTopology : true},
     (err , connection)=>{
         if (err) console.log(err);
-        else console.log("connection successful")
+        else console.log("connection successful");
     })
 
 const productsSchema = mongoose.Schema({
