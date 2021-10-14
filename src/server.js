@@ -40,13 +40,13 @@ Product.find(async (err,result)=>{
         result.forEach((document)=>{
             jsonSO.push(document);
         })
-        console.log(jsonSO)
+        router.get("/",(req,res)=>{
+            res.json(jsonSO)
+        });
     } 
 })
 
-router.get("/",(req,res)=>{
-    res.json(jsonSO)
-});
+
 app.use(`/.netlify/functions/server`, router);
 
 
