@@ -33,16 +33,17 @@ const Product = mongoose.model("ProductsAll",productsSchema);
 //     else console.log(result);
 // })
 
-Product.find(async (err,result)=>{
+Product.find((err,result)=>{
     if (err) {console.log(err);}
     else {
-        const jsonSO = ["ahppy","sad"];
-        result.forEach((document)=>{
-            jsonSO.push(document);
-        })
         router.get("/",(req,res)=>{
-            res.json(jsonSO)
+            res.json(result)
         });
+        // const jsonSO = ["ahppy","sad"];
+        // result.forEach((document)=>{
+        //     jsonSO.push(document);
+        // })
+        
     } 
 })
 
