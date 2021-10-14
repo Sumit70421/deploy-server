@@ -1,7 +1,7 @@
 const express = require("express");
-const app = express()
+const app = express();
 const serverless = require("serverless-http");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const router = express.Router();
 const url = "mongodb+srv://admin:dbpassword@clustertest.os5rj.mongodb.net/ecom?retryWrites=true&w=majority"
 mongoose.connect(url,{useNewUrlParser : true , useUnifiedTopology : true},
