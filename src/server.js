@@ -48,7 +48,7 @@ Product.find((err,result)=>{
 })
 
 
-app.use(`/.netlify/functions/server`, router);
+app.use(`/`, router);
 
 
 
