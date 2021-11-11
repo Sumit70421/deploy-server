@@ -1,24 +1,21 @@
 const express = require("express");
 const app = express();
 const serverless = require("serverless-http");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
+const {MongoClient} = require('mongodb');
+const mongoose  = require("mongoose");
 const router = express.Router();
-const url = "mongodb+srv://admin:dbpassword@clustertest.os5rj.mongodb.net/ecom?retryWrites=true&w=majority"
+const url = "mongodb+srv://rohini:p_Tp6Yf%40wSJ%40PRP@inshorts-news-scraper.s3hct.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose.connect(url,{useNewUrlParser : true , useUnifiedTopology : true},
     (err , connection)=>{
         if (err) console.log(err);
-        else console.log("connection successful");
-    })
-
-const productsSchema = mongoose.Schema({
-    imgUrl : String,
-    productName : String,
-    rating : Number,
-    price : Number,
-    type : String
+        else   console.log(connection.Mongoose)
+})
+const newsSchema = mongoose.Schema({
+    
 })
 
-const Product = mongoose.model("ProductsAll",productsSchema);
+const NewsDB = mongoose.model("NewsDB",newsSchema);
 
 // const apple = new Product({
 //     imgUrl : "https://i.ibb.co/Gvg71g6/s-l640.jpg",
@@ -33,12 +30,13 @@ const Product = mongoose.model("ProductsAll",productsSchema);
 //     else console.log(result);
 // })
 
-Product.find((err,result)=>{
-    if (err) {console.log(err);}
+NewsDB.find((err,result)=>{
+    if (err) {console.log("nhi hora");}
     else {
-        router.get("/",(req,res)=>{
-            res.json(result)
-        });
+        // router.get("/",(req,res)=>{
+            // res.json(result)
+            console.log(result)
+        // });
         // const jsonSO = ["ahppy","sad"];
         // result.forEach((document)=>{
         //     jsonSO.push(document);
@@ -53,4 +51,4 @@ app.use(`/`, router);
 
 
 module.exports = app;
-module.exports.handler = serverless(app);
+
